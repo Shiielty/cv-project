@@ -33,11 +33,25 @@ export default class Preview extends Component {
         </div>
         <div className="experience-info">
           <h3>Experience</h3>
-          <div class="flex-space-between">
+          <div className="flex-space-between">
             <div>{experience.company}</div>
+            <div>{experience.city}</div>
+          </div>
+          <div className="flex-space-between">
+            <div>{experience.position}</div>
             <div>
               {experience.from} - {experience.to}
             </div>
+          </div>
+          <ul>
+            <li>{experience.description}</li>
+          </ul>
+        </div>
+        <div className="skill-interest-info">
+          <h3>Skills & Interests</h3>
+          <div>
+            <strong>{skills.skill}: </strong>
+            {skills.description}
           </div>
         </div>
       </div>
