@@ -5,7 +5,7 @@ import Preview from "./Preview";
 export default class Content extends Component {
   constructor(props) {
     super(props);
-    this.test = {
+    this.state = {
       basic: {
         name: "Full Name",
         email: "youremail@example.com",
@@ -64,10 +64,33 @@ export default class Content extends Component {
         },
       ],
     };
+
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePhoneChange = this.handlePhoneChange.bind(this);
+  }
+
+  handleNameChange(e) {
+    const newState = this.state;
+    newState.basic.name = e.target.value;
+    this.setState(newState);
+  }
+
+  handleEmailChange(e) {
+    const newState = this.state;
+    newState.basic.email = e.target.value;
+    this.setState(newState);
+  }
+
+  handlePhoneChange(e) {
+    const newState = this.state;
+    newState.basic.phone = e.target.value;
+    this.setState(newState);
   }
 
   render() {
-    const { basic, educations, experiences, skills } = this.test;
+    const { basic, educations, experiences, skills } = this.state;
+    const { handleNameChange, handleEmailChange, handlePhoneChange } = this;
 
     return (
       <main className="content">
@@ -76,6 +99,9 @@ export default class Content extends Component {
           educations={educations}
           experiences={experiences}
           skills={skills}
+          onNameChange={handleNameChange}
+          onEmailChange={handleEmailChange}
+          onPhoneChange={handlePhoneChange}
         />
         <Preview
           basic={basic}

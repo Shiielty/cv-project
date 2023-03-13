@@ -3,6 +3,7 @@ import { Component } from "react";
 export default class Form extends Component {
   render() {
     const { basic, educations, experiences, skills } = this.props;
+    const { onNameChange, onEmailChange, onPhoneChange } = this.props;
 
     return (
       <div className="form">
@@ -16,6 +17,7 @@ export default class Form extends Component {
                 type="text"
                 value={basic.name}
                 placeholder="Full Name"
+                onChange={onNameChange}
               ></input>
             </label>
             <label>
@@ -24,6 +26,7 @@ export default class Form extends Component {
                 type="email"
                 value={basic.email}
                 placeholder="youremail@example.com"
+                onChange={onEmailChange}
               ></input>
             </label>
             <label>
@@ -32,6 +35,7 @@ export default class Form extends Component {
                 type="tel"
                 value={basic.phone}
                 placeholder="phone number"
+                onChange={onPhoneChange}
               ></input>
             </label>
           </fieldset>
@@ -42,7 +46,7 @@ export default class Form extends Component {
               University
               <input
                 type="text"
-                value={educations[0].university}
+                defaultValue={educations[0].university}
                 placeholder="Harvard University"
               ></input>
             </label>
@@ -50,7 +54,7 @@ export default class Form extends Component {
               City
               <input
                 type="text"
-                value={educations[0].city}
+                defaultValue={educations[0].city}
                 placeholder="Cambridge, MA"
               ></input>
             </label>
@@ -58,7 +62,7 @@ export default class Form extends Component {
               From
               <input
                 type="text"
-                value={educations[0].from}
+                defaultValue={educations[0].from}
                 placeholder="May 2015"
               ></input>
             </label>
@@ -66,7 +70,7 @@ export default class Form extends Component {
               To
               <input
                 type="text"
-                value={educations[0].to}
+                defaultValue={educations[0].to}
                 placeholder="June 2019"
               ></input>
             </label>
@@ -74,7 +78,7 @@ export default class Form extends Component {
               Degree/Concentration:
               <input
                 type="text"
-                value={educations[0].degree}
+                defaultValue={educations[0].degree}
                 placeholder="Ex. Civil Engineering"
               ></input>
             </label>
@@ -82,7 +86,7 @@ export default class Form extends Component {
               GPA
               <input
                 type="text"
-                value={educations[0].gpa}
+                defaultValue={educations[0].gpa}
                 placeholder="[Note: Optional. Ex. 3.5/4.0]"
               ></input>
             </label>
@@ -90,7 +94,7 @@ export default class Form extends Component {
               Thesis
               <input
                 type="text"
-                value={educations[0].thesis}
+                defaultValue={educations[0].thesis}
                 placeholder="[Note: Optional]"
               ></input>
             </label>
@@ -98,7 +102,7 @@ export default class Form extends Component {
               Relevant Coursework
               <input
                 type="text"
-                value={educations[0].relevant}
+                defaultValue={educations[0].relevant}
                 placeholder="[Note: Optional. Awards and honors can also be listed here.]"
               ></input>
             </label>
@@ -110,7 +114,7 @@ export default class Form extends Component {
               Company
               <input
                 type="text"
-                value={experiences[0].company}
+                defaultValue={experiences[0].company}
                 placeholder="Company/Organization"
               ></input>
             </label>
@@ -118,7 +122,7 @@ export default class Form extends Component {
               Position
               <input
                 type="text"
-                value={experiences[0].position}
+                defaultValue={experiences[0].position}
                 placeholder="Position"
               ></input>
             </label>
@@ -126,7 +130,7 @@ export default class Form extends Component {
               City
               <input
                 type="text"
-                value={experiences[0].city}
+                defaultValue={experiences[0].city}
                 placeholder="City, State"
               ></input>
             </label>
@@ -134,7 +138,7 @@ export default class Form extends Component {
               From
               <input
                 type="text"
-                value={experiences[0].from}
+                defaultValue={experiences[0].from}
                 placeholder="Month Year"
               ></input>
             </label>
@@ -142,14 +146,14 @@ export default class Form extends Component {
               To
               <input
                 type="text"
-                value={experiences[0].to}
+                defaultValue={experiences[0].to}
                 placeholder="Month Year"
               ></input>
             </label>
             <label>
               Description
               <textarea
-                value={experiences[0].description}
+                defaultValue={experiences[0].description}
                 placeholder="Describe your experience, skills, accomplishment or achievements"
               ></textarea>
               <button type="button">Add</button>
@@ -162,7 +166,7 @@ export default class Form extends Component {
               Skills/Interest
               <input
                 type="text"
-                value={skills[0].name}
+                defaultValue={skills[0].name}
                 placeholder="Languange, Laboratory, Interests"
               ></input>
             </label>
@@ -170,7 +174,7 @@ export default class Form extends Component {
               Description
               <input
                 type="text"
-                value={skills[0].description}
+                defaultValue={skills[0].description}
                 placholder="List of languange/research/activities you interested"
               ></input>
             </label>
