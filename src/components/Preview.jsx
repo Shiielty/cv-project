@@ -8,21 +8,29 @@ export default class Preview extends Component {
       return (
         <div key={i}>
           <div className="flex-space-between">
-            <div className="university-name">{education.university}</div>
-            <div className="university-city">{education.city}</div>
-          </div>
-          <div className="flex-space-between">
-            <div>{education.degree + " • " + education.gpa}</div>
-            <div>
-              {education.from} - {education.to}{" "}
+            <div className="university-name">
+              {education.university ? education.university : "University Name"}
+            </div>
+            <div className="university-city">
+              {education.city ? education.city : "City, State"}
             </div>
           </div>
-          <div>Thesis: "{education.thesis}"</div>
+          <div className="flex-space-between">
+            <div>
+              {(education.degree ? education.degree : "Degree/Concentration") +
+                (education.gpa ? " • GPA: " + education.gpa : "")}
+            </div>
+            <div>
+              {education.from ? education.from : "Month Year"} -{" "}
+              {education.to ? education.to : "Month Year"}
+            </div>
+          </div>
+          <div>Thesis: "{education.thesis ? education.thesis : "Title"}"</div>
           <div>
-            Relevant Coursework:
-            <ul>
-              <li>{education.relevant}</li>
-            </ul>
+            Relevant Coursework:{" "}
+            {education.relevant
+              ? education.relevant
+              : "(Awards and honors can also be listed here.)"}
           </div>
         </div>
       );
@@ -57,12 +65,18 @@ export default class Preview extends Component {
       );
     });
 
+    const fullName = basic.name ? basic.name : "Full Name";
+
     return (
       <div className="preview">
         <h2>Preview</h2>
         <div className="basic-info">
-          <div className="name">{basic.name}</div>
-          <div>{basic.email + " • " + basic.phone}</div>
+          <div className="name">{basic.name ? basic.name : "Full Name"}</div>
+          <div>
+            {(basic.email ? basic.email : "youremail@example.com") +
+              " • " +
+              (basic.phone ? basic.phone : "(000)000-000")}
+          </div>
         </div>
         <div className="educations-info">
           <h3>Education</h3>

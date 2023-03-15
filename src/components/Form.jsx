@@ -3,7 +3,226 @@ import { Component } from "react";
 export default class Form extends Component {
   render() {
     const { basic, educations, experiences, skills } = this.props;
-    const { onNameChange, onEmailChange, onPhoneChange } = this.props;
+    const {
+      onNameChange,
+      onEmailChange,
+      onPhoneChange,
+      onEduUniChange,
+      onEduCityChange,
+      onEduFromChange,
+      onEduToChange,
+      onEduDegreeChange,
+      onEduGPAChange,
+      onEduThesisChange,
+      onEduRelevantChange,
+      onAddEduClick,
+      onDeleteEduClick,
+      onEditEduClick,
+    } = this.props;
+
+    const renderEducations = () => {
+      if (educations.length <= 1) {
+        return (
+          <>
+            <label>
+              University
+              <input
+                type="text"
+                value={educations[0].university}
+                placeholder="Harvard University"
+                data-key="0"
+                onChange={onEduUniChange}
+              ></input>
+            </label>
+            <label>
+              City
+              <input
+                type="text"
+                value={educations[0].city}
+                data-key="0"
+                placeholder="Cambridge, MA"
+                onChange={onEduCityChange}
+              ></input>
+            </label>
+            <label>
+              From
+              <input
+                type="text"
+                value={educations[0].from}
+                placeholder="May 2015"
+                data-key="0"
+                onChange={onEduFromChange}
+              ></input>
+            </label>
+            <label>
+              To
+              <input
+                type="text"
+                value={educations[0].to}
+                placeholder="June 2019"
+                data-key="0"
+                onChange={onEduToChange}
+              ></input>
+            </label>
+            <label>
+              Degree/Concentration:
+              <input
+                type="text"
+                value={educations[0].degree}
+                placeholder="Ex. Civil Engineering"
+                data-key="0"
+                onChange={onEduDegreeChange}
+              ></input>
+            </label>
+            <label>
+              GPA
+              <input
+                type="text"
+                value={educations[0].gpa}
+                placeholder="[Note: Optional. Ex. 3.5/4.0]"
+                data-key="0"
+                onChange={onEduGPAChange}
+              ></input>
+            </label>
+            <label>
+              Thesis
+              <input
+                type="text"
+                value={educations[0].thesis}
+                placeholder="[Note: Optional]"
+                data-key="0"
+                onChange={onEduThesisChange}
+              ></input>
+            </label>
+            <label>
+              Relevant Coursework
+              <input
+                type="text"
+                value={educations[0].relevant}
+                placeholder="[Note: Optional. Awards and honors can also be listed here.]"
+                data-key="0"
+                onChange={onEduRelevantChange}
+              ></input>
+            </label>
+          </>
+        );
+      } else {
+        return allEducationsForm;
+      }
+    };
+
+    const allEducationsForm = educations.map((education, i) => {
+      if (i + 1 === educations.length && education.edited === true) {
+        return (
+          <div key={education}>
+            <label>
+              University
+              <input
+                type="text"
+                value={education.university}
+                placeholder="Harvard University"
+                data-key={i}
+                onChange={onEduUniChange}
+              ></input>
+            </label>
+            <label>
+              City
+              <input
+                type="text"
+                value={education.city}
+                data-key={i}
+                placeholder="Cambridge, MA"
+                onChange={onEduCityChange}
+              ></input>
+            </label>
+            <label>
+              From
+              <input
+                type="text"
+                value={education.from}
+                placeholder="May 2015"
+                data-key={i}
+                onChange={onEduFromChange}
+              ></input>
+            </label>
+            <label>
+              To
+              <input
+                type="text"
+                value={education.to}
+                placeholder="June 2019"
+                data-key={i}
+                onChange={onEduToChange}
+              ></input>
+            </label>
+            <label>
+              Degree/Concentration:
+              <input
+                type="text"
+                value={education.degree}
+                placeholder="Ex. Civil Engineering"
+                data-key={i}
+                onChange={onEduDegreeChange}
+              ></input>
+            </label>
+            <label>
+              GPA
+              <input
+                type="text"
+                value={education.gpa}
+                placeholder="[Note: Optional. Ex. 3.5/4.0]"
+                data-key={i}
+                onChange={onEduGPAChange}
+              ></input>
+            </label>
+            <label>
+              Thesis
+              <input
+                type="text"
+                value={education.thesis}
+                placeholder="[Note: Optional]"
+                data-key={i}
+                onChange={onEduThesisChange}
+              ></input>
+            </label>
+            <label>
+              Relevant Coursework
+              <input
+                type="text"
+                value={education.relevant}
+                placeholder="[Note: Optional. Awards and honors can also be listed here.]"
+                data-key={i}
+                onChange={onEduRelevantChange}
+              ></input>
+            </label>
+          </div>
+        );
+      } else {
+        return (
+          <>
+            <div key={education} className="education-list">
+              {education.university}
+              <button
+                type="button"
+                className="edit-btn"
+                data-key={i}
+                onClick={onEditEduClick}
+              >
+                edit
+              </button>
+              <button
+                type="button"
+                className="delete-btn"
+                data-key={i}
+                onClick={onDeleteEduClick}
+              >
+                x
+              </button>
+            </div>
+          </>
+        );
+      }
+    });
 
     return (
       <div className="form">
@@ -42,70 +261,10 @@ export default class Form extends Component {
 
           <fieldset>
             <legend>Education</legend>
-            <label>
-              University
-              <input
-                type="text"
-                defaultValue={educations[0].university}
-                placeholder="Harvard University"
-              ></input>
-            </label>
-            <label>
-              City
-              <input
-                type="text"
-                defaultValue={educations[0].city}
-                placeholder="Cambridge, MA"
-              ></input>
-            </label>
-            <label>
-              From
-              <input
-                type="text"
-                defaultValue={educations[0].from}
-                placeholder="May 2015"
-              ></input>
-            </label>
-            <label>
-              To
-              <input
-                type="text"
-                defaultValue={educations[0].to}
-                placeholder="June 2019"
-              ></input>
-            </label>
-            <label>
-              Degree/Concentration:
-              <input
-                type="text"
-                defaultValue={educations[0].degree}
-                placeholder="Ex. Civil Engineering"
-              ></input>
-            </label>
-            <label>
-              GPA
-              <input
-                type="text"
-                defaultValue={educations[0].gpa}
-                placeholder="[Note: Optional. Ex. 3.5/4.0]"
-              ></input>
-            </label>
-            <label>
-              Thesis
-              <input
-                type="text"
-                defaultValue={educations[0].thesis}
-                placeholder="[Note: Optional]"
-              ></input>
-            </label>
-            <label>
-              Relevant Coursework
-              <input
-                type="text"
-                defaultValue={educations[0].relevant}
-                placeholder="[Note: Optional. Awards and honors can also be listed here.]"
-              ></input>
-            </label>
+            {renderEducations()}
+            <button className="add-edu-btn" onClick={onAddEduClick}>
+              Add More
+            </button>
           </fieldset>
 
           <fieldset>
