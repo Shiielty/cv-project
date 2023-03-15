@@ -78,7 +78,6 @@ export default class Preview extends Component {
 
     return (
       <div className="preview">
-        <h2>Preview</h2>
         <div className="basic-info">
           <div className="name">{basic.name ? basic.name : "Full Name"}</div>
           <div>

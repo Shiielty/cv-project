@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Header from "./Header";
 
 export default class Form extends Component {
   render() {
@@ -288,10 +289,10 @@ export default class Form extends Component {
 
     return (
       <div className="form">
-        <h2>Form</h2>
+        <Header />
         <form>
-          <fieldset>
-            <legend>Basic Info</legend>
+          <div className="form-category">
+            <div className="form-header">Basic Info</div>
             <label>
               Name
               <input
@@ -319,31 +320,31 @@ export default class Form extends Component {
                 onChange={onPhoneChange}
               ></input>
             </label>
-          </fieldset>
+          </div>
 
-          <fieldset>
-            <legend>Education</legend>
+          <div className="form-category">
+            <div className="form-header">Education</div>
             {allEducationsForm}
             <button className="add-btn" onClick={onAddEduClick}>
               Add More
             </button>
-          </fieldset>
+          </div>
 
-          <fieldset>
-            <legend>Experience</legend>
+          <div className="form-category">
+            <div className="form-header">Experience</div>
             {allExperiencesForm}
             <button type="button" className="add-btn" onClick={onAddExpClick}>
               Add More
             </button>
-          </fieldset>
+          </div>
 
-          <fieldset>
-            <legend>Skills & Interest</legend>
+          <div className="form-category">
+            <div className="form-header">Skills & Interest</div>
             {allSkillsForm}
             <button type="button" className="add-btn" onClick={onAddSkillClick}>
               Add More
             </button>
-          </fieldset>
+          </div>
         </form>
       </div>
     );

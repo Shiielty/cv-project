@@ -1,3 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(315deg, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 1));
+  height: 877px;
+}
+
 label,
 input,
 textarea {
@@ -12,25 +23,74 @@ textarea {
 .content {
   width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+}
+
+.form {
+  max-width: 40%;
+  height: 877px;;
+  overflow: scroll;
+  flex: 1;
+  background: linear-gradient(135deg, rgba(100,0,255, 0.3), rgba(50,50,255, .5));
+  padding: 3.5em;
+}
+
+.form-header {
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-bottom: 3px solid black;
+  margin-top: 30px;
+}
+
+label {
+  margin-top: 10px
+}
+
+input,
+textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: .5em;
+  background-color: transparent;
+  margin-top: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  outline: none;
+}
+
+button.add-btn {
+  padding: 1em 2em;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  background: linear-gradient(to right,rgba(0, 0, 0, .8), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .8));
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+}
+
+button.add-btn:hover {
+  background: linear-gradient(to right, rgba(0, 0, 0, .8), rgba(200, 200, 200, 1),  rgba(0, 0, 0, .8));
+  color: black;
+
 }
 
 .preview {
-  max-width: 700px;
-  padding: .7em;
+  width: 620px;
+  height: 877px;
+  margin: 0 auto;
+  padding: 2em;
   border: 1px solid gray;
-  font-size: 0.7rem;
-  align-self: flex-start;
-  position: sticky;
-  top: 50px;
+  font-size: .8rem;
+  background-color: white;
+  visibility: visible;
 }
 
 .name {
   text-align: center;
   font-weight: 700;
   border-bottom: 1px solid black;
+  margin-top: 30px;
 }
 
 .basic-info > div:nth-of-type(2) {
@@ -39,9 +99,54 @@ textarea {
 
 h3 {
   text-align: center;
+  margin-top: 30px;
+  font-size: 1rem;
 }
 
 .university-name,
 .company-name {
   font-weight: 700;
+}
+
+@media only screen and (max-width: 1000px) {
+  .form, input, textarea {
+    max-width: 100%;
+    font-size: 1.2rem;
+  }
+
+  button.add-btn {
+    max-width: 100%;
+    padding: .7em;
+    font-size: 1.1rem;
+  }
+
+  .preview {
+    position: absolute;
+    right: 1%;
+    left: 1%
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .preview, .preview * {
+    visibility: visible;
+  }
+
+  .preview .name {
+    border-bottom: 3px solid black;
+  }
+
+  .preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1em;
+    font-size: 18px;
+  }
 }

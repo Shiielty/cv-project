@@ -1,12 +1,12 @@
-import Header from "./components/Header";
 import Content from "./components/Content";
+import FloatButton from "./components/FloatButton";
 import "./styles.css";
 
 function App() {
   return (
     <div className="App">
-      <Header />
       <Content />
+      <FloatButton />
     </div>
   );
 }
