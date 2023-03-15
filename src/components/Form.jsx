@@ -20,97 +20,6 @@ export default class Form extends Component {
       onEditEduClick,
     } = this.props;
 
-    const renderEducations = () => {
-      if (educations.length <= 1) {
-        return (
-          <>
-            <label>
-              University
-              <input
-                type="text"
-                value={educations[0].university}
-                placeholder="Harvard University"
-                data-key="0"
-                onChange={onEduUniChange}
-              ></input>
-            </label>
-            <label>
-              City
-              <input
-                type="text"
-                value={educations[0].city}
-                data-key="0"
-                placeholder="Cambridge, MA"
-                onChange={onEduCityChange}
-              ></input>
-            </label>
-            <label>
-              From
-              <input
-                type="text"
-                value={educations[0].from}
-                placeholder="May 2015"
-                data-key="0"
-                onChange={onEduFromChange}
-              ></input>
-            </label>
-            <label>
-              To
-              <input
-                type="text"
-                value={educations[0].to}
-                placeholder="June 2019"
-                data-key="0"
-                onChange={onEduToChange}
-              ></input>
-            </label>
-            <label>
-              Degree/Concentration:
-              <input
-                type="text"
-                value={educations[0].degree}
-                placeholder="Ex. Civil Engineering"
-                data-key="0"
-                onChange={onEduDegreeChange}
-              ></input>
-            </label>
-            <label>
-              GPA
-              <input
-                type="text"
-                value={educations[0].gpa}
-                placeholder="[Note: Optional. Ex. 3.5/4.0]"
-                data-key="0"
-                onChange={onEduGPAChange}
-              ></input>
-            </label>
-            <label>
-              Thesis
-              <input
-                type="text"
-                value={educations[0].thesis}
-                placeholder="[Note: Optional]"
-                data-key="0"
-                onChange={onEduThesisChange}
-              ></input>
-            </label>
-            <label>
-              Relevant Coursework
-              <input
-                type="text"
-                value={educations[0].relevant}
-                placeholder="[Note: Optional. Awards and honors can also be listed here.]"
-                data-key="0"
-                onChange={onEduRelevantChange}
-              ></input>
-            </label>
-          </>
-        );
-      } else {
-        return allEducationsForm;
-      }
-    };
-
     const allEducationsForm = educations.map((education, i) => {
       if (i + 1 === educations.length && education.edited === true) {
         return (
@@ -261,7 +170,7 @@ export default class Form extends Component {
 
           <fieldset>
             <legend>Education</legend>
-            {renderEducations()}
+            {allEducationsForm}
             <button className="add-edu-btn" onClick={onAddEduClick}>
               Add More
             </button>
