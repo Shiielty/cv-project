@@ -26,32 +26,20 @@ export default class Content extends Component {
       ],
       experiences: [
         {
-          company: "Company/Organization",
-          position: "Position",
-          city: "City, State",
-          from: "Month Year",
-          to: "Month Year",
-          description:
-            "Describe your experience, knowledge, skills or achievement here",
-        },
-        {
-          company: "Company/Organization",
-          position: "Position",
-          city: "City, State",
-          from: "Month Year",
-          to: "Month Year",
-          description:
-            "Describe your experience, knowledge, skills or achievement here",
+          company: "",
+          position: "",
+          city: "",
+          from: "",
+          to: "",
+          description: "",
+          edited: true,
         },
       ],
       skills: [
         {
-          name: "Languange",
-          description: "Fluent in English, French, and Japanese.",
-        },
-        {
-          name: "Languange",
-          description: "Fluent in English, French, and Japanese.",
+          name: "",
+          description: "",
+          edited: true,
         },
       ],
     };
@@ -70,6 +58,20 @@ export default class Content extends Component {
     this.handleAddEduClick = this.handleAddEduClick.bind(this);
     this.handleDeleteEduClick = this.handleDeleteEduClick.bind(this);
     this.handleEditEduClick = this.handleEditEduClick.bind(this);
+    this.handleExpCompanyChange = this.handleExpCompanyChange.bind(this);
+    this.handleExpPositionChange = this.handleExpPositionChange.bind(this);
+    this.handleExpCityChange = this.handleExpCityChange.bind(this);
+    this.handleExpFromChange = this.handleExpFromChange.bind(this);
+    this.handleExpToChange = this.handleExpToChange.bind(this);
+    this.handleExpDescChange = this.handleExpDescChange.bind(this);
+    this.handleAddExpClick = this.handleAddExpClick.bind(this);
+    this.handleEditExpClick = this.handleEditExpClick.bind(this);
+    this.handleDeleteExpClick = this.handleDeleteExpClick.bind(this);
+    this.handleSkillChange = this.handleSkillChange.bind(this);
+    this.handleSkillDescChange = this.handleSkillDescChange.bind(this);
+    this.handleAddSkillClick = this.handleAddSkillClick.bind(this);
+    this.handleEditSkillClick = this.handleEditSkillClick.bind(this);
+    this.handleDeleteSkillClick = this.handleDeleteSkillClick.bind(this);
   }
 
   handleNameChange(e) {
@@ -184,6 +186,130 @@ export default class Content extends Component {
     this.setState(newState);
   }
 
+  handleExpCompanyChange(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.experiences[key].company = e.target.value;
+    this.setState(newState);
+  }
+
+  handleExpPositionChange(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.experiences[key].position = e.target.value;
+    this.setState(newState);
+  }
+
+  handleExpCityChange(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.experiences[key].city = e.target.value;
+    this.setState(newState);
+  }
+
+  handleExpFromChange(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.experiences[key].from = e.target.value;
+    this.setState(newState);
+  }
+
+  handleExpToChange(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.experiences[key].to = e.target.value;
+    this.setState(newState);
+  }
+
+  handleExpDescChange(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.experiences[key].description = e.target.value;
+    this.setState(newState);
+  }
+
+  handleAddExpClick(e) {
+    e.preventDefault();
+    const newExp = {
+      company: "",
+      position: "",
+      city: "",
+      from: "",
+      to: "",
+      description: "",
+      edited: true,
+    };
+    const newState = this.state;
+    newState.experiences[newState.experiences.length - 1].edited = false;
+    newState.experiences.push(newExp);
+    this.setState(newState);
+  }
+
+  handleDeleteExpClick(e) {
+    e.preventDefault();
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.experiences.splice(key, 1);
+    this.setState(newState);
+  }
+
+  handleEditExpClick(e) {
+    e.preventDefault();
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.experiences[key].edited = true;
+    const arr = newState.experiences.splice(key, 1);
+    newState.experiences.pop();
+    newState.experiences.push(...arr);
+    this.setState(newState);
+  }
+
+  handleSkillChange(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.skills[key].name = e.target.value;
+    this.setState(newState);
+  }
+
+  handleSkillDescChange(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.skills[key].description = e.target.value;
+    this.setState(newState);
+  }
+
+  handleAddSkillClick(e) {
+    e.preventDefault();
+    const newExp = {
+      name: "",
+      description: "",
+      edited: true,
+    };
+    const newState = this.state;
+    newState.skills[newState.skills.length - 1].edited = false;
+    newState.skills.push(newExp);
+    this.setState(newState);
+  }
+
+  handleEditSkillClick(e) {
+    e.preventDefault();
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.skills[key].edited = true;
+    const arr = newState.skills.splice(key, 1);
+    newState.skills.pop();
+    newState.skills.push(...arr);
+    this.setState(newState);
+  }
+
+  handleDeleteSkillClick(e) {
+    e.preventDefault();
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    newState.skills.splice(key, 1);
+    this.setState(newState);
+  }
+
   render() {
     const { basic, educations, experiences, skills } = this.state;
     const {
@@ -201,6 +327,20 @@ export default class Content extends Component {
       handleAddEduClick,
       handleDeleteEduClick,
       handleEditEduClick,
+      handleExpCompanyChange,
+      handleExpPositionChange,
+      handleExpCityChange,
+      handleExpFromChange,
+      handleExpToChange,
+      handleExpDescChange,
+      handleAddExpClick,
+      handleEditExpClick,
+      handleDeleteExpClick,
+      handleSkillChange,
+      handleSkillDescChange,
+      handleAddSkillClick,
+      handleEditSkillClick,
+      handleDeleteSkillClick,
     } = this;
 
     return (
@@ -224,6 +364,20 @@ export default class Content extends Component {
           onAddEduClick={handleAddEduClick}
           onDeleteEduClick={handleDeleteEduClick}
           onEditEduClick={handleEditEduClick}
+          onExpCompanyChange={handleExpCompanyChange}
+          onExpPositionChange={handleExpPositionChange}
+          onExpCityChange={handleExpCityChange}
+          onExpFromChange={handleExpFromChange}
+          onExpToChange={handleExpToChange}
+          onExpDescChange={handleExpDescChange}
+          onAddExpClick={handleAddExpClick}
+          onEditExpClick={handleEditExpClick}
+          onDeleteExpClick={handleDeleteExpClick}
+          onSkillChange={handleSkillChange}
+          onSkillDescChange={handleSkillDescChange}
+          onAddSkillClick={handleAddSkillClick}
+          onEditSkillClick={handleEditSkillClick}
+          onDeleteSkillClick={handleDeleteSkillClick}
         />
         <Preview
           basic={basic}

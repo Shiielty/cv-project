@@ -22,6 +22,9 @@ textarea {
   padding: .7em;
   border: 1px solid gray;
   font-size: 0.7rem;
+  align-self: flex-start;
+  position: sticky;
+  top: 50px;
 }
 
 .name {
@@ -38,6 +41,7 @@ h3 {
   text-align: center;
 }
 
-.university-name {
+.university-name,
+.company-name {
   font-weight: 700;
 }

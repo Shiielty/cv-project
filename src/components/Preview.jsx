@@ -40,17 +40,24 @@ export default class Preview extends Component {
       return (
         <div key={i}>
           <div className="flex-space-between">
-            <div>{experience.company}</div>
-            <div>{experience.city}</div>
+            <div className="company-name">
+              {experience.company ? experience.company : "Company/Organization"}
+            </div>
+            <div>{experience.city ? experience.city : "City, State"}</div>
           </div>
           <div className="flex-space-between">
-            <div>{experience.position}</div>
+            <div>{experience.position ? experience.position : "Position"}</div>
             <div>
-              {experience.from} - {experience.to}
+              {experience.from ? experience.from : "Month Year"} -{" "}
+              {experience.to ? experience.to : "Month Year"}
             </div>
           </div>
           <ul>
-            <li>{experience.description}</li>
+            <li>
+              {experience.description
+                ? experience.description
+                : "Describe your experience, knowledge or achievement here."}
+            </li>
           </ul>
         </div>
       );
@@ -59,8 +66,10 @@ export default class Preview extends Component {
     const allSkills = skills.map((skill, i) => {
       return (
         <div key={i}>
-          <strong>{skill.name}: </strong>
-          {skill.description}
+          <strong>{skill.name ? skill.name : "Category"}: </strong>
+          {skill.description
+            ? skill.description
+            : "Description (ex. Languange: List of fluent language)"}
         </div>
       );
     });

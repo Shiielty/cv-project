@@ -18,12 +18,26 @@ export default class Form extends Component {
       onAddEduClick,
       onDeleteEduClick,
       onEditEduClick,
+      onExpCompanyChange,
+      onExpPositionChange,
+      onExpCityChange,
+      onExpFromChange,
+      onExpToChange,
+      onExpDescChange,
+      onAddExpClick,
+      onEditExpClick,
+      onDeleteExpClick,
+      onSkillChange,
+      onSkillDescChange,
+      onAddSkillClick,
+      onEditSkillClick,
+      onDeleteSkillClick,
     } = this.props;
 
     const allEducationsForm = educations.map((education, i) => {
       if (i + 1 === educations.length && education.edited === true) {
         return (
-          <div key={education}>
+          <div key={i}>
             <label>
               University
               <input
@@ -108,27 +122,166 @@ export default class Form extends Component {
         );
       } else {
         return (
-          <>
-            <div key={education} className="education-list">
-              {education.university}
-              <button
-                type="button"
-                className="edit-btn"
+          <div key={i} className="education-list">
+            {education.university}
+            <button
+              type="button"
+              className="edit-btn"
+              data-key={i}
+              onClick={onEditEduClick}
+            >
+              edit
+            </button>
+            <button
+              type="button"
+              className="delete-btn"
+              data-key={i}
+              onClick={onDeleteEduClick}
+            >
+              x
+            </button>
+          </div>
+        );
+      }
+    });
+
+    const allExperiencesForm = experiences.map((experience, i) => {
+      if (i + 1 === experiences.length && experience.edited === true) {
+        return (
+          <div key={i}>
+            <label>
+              Company
+              <input
+                type="text"
+                value={experience.company}
+                placeholder="Company/Organization"
                 data-key={i}
-                onClick={onEditEduClick}
-              >
-                edit
-              </button>
-              <button
-                type="button"
-                className="delete-btn"
+                onChange={onExpCompanyChange}
+              ></input>
+            </label>
+            <label>
+              Position
+              <input
+                type="text"
+                value={experience.position}
+                placeholder="Position"
                 data-key={i}
-                onClick={onDeleteEduClick}
-              >
-                x
-              </button>
-            </div>
-          </>
+                onChange={onExpPositionChange}
+              ></input>
+            </label>
+            <label>
+              City
+              <input
+                type="text"
+                value={experience.city}
+                placeholder="City, State"
+                data-key={i}
+                onChange={onExpCityChange}
+              ></input>
+            </label>
+            <label>
+              From
+              <input
+                type="text"
+                value={experience.from}
+                placeholder="Month Year"
+                data-key={i}
+                onChange={onExpFromChange}
+              ></input>
+            </label>
+            <label>
+              To
+              <input
+                type="text"
+                value={experience.to}
+                placeholder="Month Year"
+                data-key={i}
+                onChange={onExpToChange}
+              ></input>
+            </label>
+            <label>
+              Description
+              <textarea
+                value={experience.description}
+                placeholder="Describe your experience, skills, accomplishment or achievements"
+                data-key={i}
+                onChange={onExpDescChange}
+              ></textarea>
+            </label>
+          </div>
+        );
+      } else {
+        return (
+          <div key={i} className="education-list">
+            {experience.company}
+            <button
+              type="button"
+              className="edit-btn"
+              data-key={i}
+              onClick={onEditExpClick}
+            >
+              edit
+            </button>
+            <button
+              type="button"
+              className="delete-btn"
+              data-key={i}
+              onClick={onDeleteExpClick}
+            >
+              x
+            </button>
+          </div>
+        );
+      }
+    });
+
+    const allSkillsForm = skills.map((skill, i) => {
+      if (i + 1 === skills.length && skill.edited === true) {
+        return (
+          <div key={i}>
+            <label>
+              Category
+              <input
+                type="text"
+                value={skill.name}
+                placeholder="Languange, Laboratory, Interests"
+                data-key={i}
+                onChange={onSkillChange}
+              ></input>
+            </label>
+            <label>
+              Description
+              <input
+                type="text"
+                value={skill.description}
+                placeholder="List of languange/research/activities you interested"
+                data-key={i}
+                onChange={onSkillDescChange}
+              ></input>
+            </label>
+          </div>
+        );
+      } else {
+        return (
+          <div key={i} className="skill-list">
+            {skill.name}
+            <button
+              type="button"
+              className="edit-btn"
+              data-key={i}
+              onClick={onEditSkillClick}
+            >
+              edit
+            </button>
+            <button
+              type="button"
+              className="delete-btn"
+              data-key={i}
+              onClick={onDeleteSkillClick}
+            >
+              x
+            </button>
+          </div>
         );
       }
     });
@@ -171,82 +324,25 @@ export default class Form extends Component {
           <fieldset>
             <legend>Education</legend>
             {allEducationsForm}
-            <button className="add-edu-btn" onClick={onAddEduClick}>
+            <button className="add-btn" onClick={onAddEduClick}>
               Add More
             </button>
           </fieldset>
 
           <fieldset>
             <legend>Experience</legend>
-            <label>
-              Company
-              <input
-                type="text"
-                defaultValue={experiences[0].company}
-                placeholder="Company/Organization"
-              ></input>
-            </label>
-            <label>
-              Position
-              <input
-                type="text"
-                defaultValue={experiences[0].position}
-                placeholder="Position"
-              ></input>
-            </label>
-            <label>
-              City
-              <input
-                type="text"
-                defaultValue={experiences[0].city}
-                placeholder="City, State"
-              ></input>
-            </label>
-            <label>
-              From
-              <input
-                type="text"
-                defaultValue={experiences[0].from}
-                placeholder="Month Year"
-              ></input>
-            </label>
-            <label>
-              To
-              <input
-                type="text"
-                defaultValue={experiences[0].to}
-                placeholder="Month Year"
-              ></input>
-            </label>
-            <label>
-              Description
-              <textarea
-                defaultValue={experiences[0].description}
-                placeholder="Describe your experience, skills, accomplishment or achievements"
-              ></textarea>
-              <button type="button">Add</button>
-            </label>
+            {allExperiencesForm}
+            <button type="button" className="add-btn" onClick={onAddExpClick}>
+              Add More
+            </button>
           </fieldset>
 
           <fieldset>
-            <label>Skills & Interest</label>
-            <label>
-              Skills/Interest
-              <input
-                type="text"
-                defaultValue={skills[0].name}
-                placeholder="Languange, Laboratory, Interests"
-              ></input>
-            </label>
-            <label>
-              Description
-              <input
-                type="text"
-                defaultValue={skills[0].description}
-                placholder="List of languange/research/activities you interested"
-              ></input>
-            </label>
-            <button type="button">Add</button>
+            <legend>Skills & Interest</legend>
+            {allSkillsForm}
+            <button type="button" className="add-btn" onClick={onAddSkillClick}>
+              Add More
+            </button>
           </fieldset>
         </form>
       </div>
