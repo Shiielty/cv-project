@@ -6,7 +6,7 @@
   gap: 5px;
 }
 
-button {
+.float-btn button {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -16,7 +16,7 @@ button {
   border-radius: 100%;
 }
 
-button:hover {
+.float-btn button:hover {
   cursor: pointer;
   background-color: rgb(150, 150, 255);
 }
