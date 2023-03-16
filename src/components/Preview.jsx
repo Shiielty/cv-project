@@ -4,6 +4,18 @@ export default class Preview extends Component {
   render() {
     const { basic, educations, experiences, skills } = this.props;
 
+    function renderRelevant(list) {
+      return list.map((item, i) => {
+        return <li key={i}>{item}</li>;
+      });
+    }
+
+    function renderDescription(list) {
+      return list.map((item, i) => {
+        return <li key={i}>{item}</li>;
+      });
+    }
+
     const allEducations = educations.map((education, i) => {
       return (
         <div key={i}>
@@ -25,12 +37,10 @@ export default class Preview extends Component {
               {education.to ? education.to : "Month Year"}
             </div>
           </div>
-          <div>Thesis: "{education.thesis ? education.thesis : "Title"}"</div>
+          <div>{education.thesis ? "Thesis: " + education.thesis : ""}</div>
           <div>
-            Relevant Coursework:{" "}
-            {education.relevant
-              ? education.relevant
-              : "(Awards and honors can also be listed here.)"}
+            {education.relevant.length ? "Relevant Coursework: " : ""}
+            <ul>{renderRelevant(education.relevant)}</ul>
           </div>
         </div>
       );
@@ -52,13 +62,12 @@ export default class Preview extends Component {
               {experience.to ? experience.to : "Month Year"}
             </div>
           </div>
-          <ul>
-            <li>
-              {experience.description
-                ? experience.description
-                : "Describe your experience, knowledge or achievement here."}
-            </li>
-          </ul>
+          <div>
+            {experience.description.length
+              ? ""
+              : "• Describe your experience, knowledge or achievement here."}
+            <ul>{renderDescription(experience.description)}</ul>
+          </div>
         </div>
       );
     });

@@ -20,7 +20,8 @@ export default class Content extends Component {
           degree: "",
           gpa: "",
           thesis: "",
-          relevant: "",
+          relevant: [],
+          relevantForm: "",
           edited: true,
         },
       ],
@@ -31,7 +32,8 @@ export default class Content extends Component {
           city: "",
           from: "",
           to: "",
-          description: "",
+          description: [],
+          descriptionForm: "",
           edited: true,
         },
       ],
@@ -55,6 +57,7 @@ export default class Content extends Component {
     this.handleEduGPAChange = this.handleEduGPAChange.bind(this);
     this.handleEduThesisChange = this.handleEduThesisChange.bind(this);
     this.handleEduRelevantChange = this.handleEduRelevantChange.bind(this);
+    this.handleAddRelevantClick = this.handleAddRelevantClick.bind(this);
     this.handleAddEduClick = this.handleAddEduClick.bind(this);
     this.handleDeleteEduClick = this.handleDeleteEduClick.bind(this);
     this.handleEditEduClick = this.handleEditEduClick.bind(this);
@@ -64,6 +67,7 @@ export default class Content extends Component {
     this.handleExpFromChange = this.handleExpFromChange.bind(this);
     this.handleExpToChange = this.handleExpToChange.bind(this);
     this.handleExpDescChange = this.handleExpDescChange.bind(this);
+    this.handleAddDescClick = this.handleAddDescClick.bind(this);
     this.handleAddExpClick = this.handleAddExpClick.bind(this);
     this.handleEditExpClick = this.handleEditExpClick.bind(this);
     this.handleDeleteExpClick = this.handleDeleteExpClick.bind(this);
@@ -144,29 +148,36 @@ export default class Content extends Component {
   handleEduRelevantChange(e) {
     const key = parseInt(e.target.dataset.key);
     const newState = this.state;
-    newState.educations[key].relevant = e.target.value;
+    newState.educations[key].relevantForm = e.target.value;
+    this.setState(newState);
+  }
+
+  handleAddRelevantClick(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    const val = this.state.educations[key].relevantForm;
+    newState.educations[key].relevant.push(val);
+    newState.educations[key].relevantForm = "";
     this.setState(newState);
   }
 
   handleAddEduClick(e) {
     e.preventDefault();
-    if (this.state.educations[this.state.educations.length - 1].university) {
-      const newEdu = {
-        university: "",
-        city: "",
-        from: "",
-        to: "",
-        degree: "",
-        gpa: "",
-        thesis: "",
-        relevant: "",
-        edited: true,
-      };
-      const newState = this.state;
-      newState.educations[newState.educations.length - 1].edited = false;
-      newState.educations.push(newEdu);
-      this.setState(newState);
-    }
+    const newEdu = {
+      university: "",
+      city: "",
+      from: "",
+      to: "",
+      degree: "",
+      gpa: "",
+      thesis: "",
+      relevant: [],
+      edited: true,
+    };
+    const newState = this.state;
+    newState.educations[newState.educations.length - 1].edited = false;
+    newState.educations.push(newEdu);
+    this.setState(newState);
   }
 
   handleDeleteEduClick(e) {
@@ -226,7 +237,16 @@ export default class Content extends Component {
   handleExpDescChange(e) {
     const key = parseInt(e.target.dataset.key);
     const newState = this.state;
-    newState.experiences[key].description = e.target.value;
+    newState.experiences[key].descriptionForm = e.target.value;
+    this.setState(newState);
+  }
+
+  handleAddDescClick(e) {
+    const key = parseInt(e.target.dataset.key);
+    const newState = this.state;
+    const val = this.state.experiences[key].descriptionForm;
+    newState.experiences[key].description.push(val);
+    newState.experiences[key].descriptionForm = "";
     this.setState(newState);
   }
 
@@ -238,7 +258,8 @@ export default class Content extends Component {
       city: "",
       from: "",
       to: "",
-      description: "",
+      description: [],
+      descriptionForm: "",
       edited: true,
     };
     const newState = this.state;
@@ -326,6 +347,7 @@ export default class Content extends Component {
       handleEduGPAChange,
       handleEduThesisChange,
       handleEduRelevantChange,
+      handleAddRelevantClick,
       handleAddEduClick,
       handleDeleteEduClick,
       handleEditEduClick,
@@ -335,6 +357,7 @@ export default class Content extends Component {
       handleExpFromChange,
       handleExpToChange,
       handleExpDescChange,
+      handleAddDescClick,
       handleAddExpClick,
       handleEditExpClick,
       handleDeleteExpClick,
@@ -363,6 +386,7 @@ export default class Content extends Component {
           onEduGPAChange={handleEduGPAChange}
           onEduThesisChange={handleEduThesisChange}
           onEduRelevantChange={handleEduRelevantChange}
+          onAddRelevantClick={handleAddRelevantClick}
           onAddEduClick={handleAddEduClick}
           onDeleteEduClick={handleDeleteEduClick}
           onEditEduClick={handleEditEduClick}
@@ -372,6 +396,7 @@ export default class Content extends Component {
           onExpFromChange={handleExpFromChange}
           onExpToChange={handleExpToChange}
           onExpDescChange={handleExpDescChange}
+          onAddDescClick={handleAddDescClick}
           onAddExpClick={handleAddExpClick}
           onEditExpClick={handleEditExpClick}
           onDeleteExpClick={handleDeleteExpClick}

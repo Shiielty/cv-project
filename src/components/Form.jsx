@@ -1,8 +1,8 @@
 import { Component } from "react";
 import Header from "./Header";
 import EditLogo from "../assets/pen-to-square-solid.svg";
-import DeleteLogo from "../assets/xmark-solid.svg";
 import TrashLogo from "../assets/trash-solid.svg";
+import PlusLogo from "../assets/circle-plus-solid.svg";
 
 export default class Form extends Component {
   render() {
@@ -19,6 +19,7 @@ export default class Form extends Component {
       onEduGPAChange,
       onEduThesisChange,
       onEduRelevantChange,
+      onAddRelevantClick,
       onAddEduClick,
       onDeleteEduClick,
       onEditEduClick,
@@ -28,6 +29,7 @@ export default class Form extends Component {
       onExpFromChange,
       onExpToChange,
       onExpDescChange,
+      onAddDescClick,
       onAddExpClick,
       onEditExpClick,
       onDeleteExpClick,
@@ -116,11 +118,20 @@ export default class Form extends Component {
               Relevant Coursework
               <input
                 type="text"
-                value={education.relevant}
+                value={education.relevantForm}
                 placeholder="[Note: Optional. Awards and honors can also be listed here.]"
                 data-key={i}
                 onChange={onEduRelevantChange}
               ></input>
+              <button
+                className="plus-btn"
+                type="button"
+                onClick={onAddRelevantClick}
+                data-key={i}
+              >
+                <img src={PlusLogo} alt="add" />
+                Add Relevant Coursework
+              </button>
             </label>
           </div>
         );
@@ -206,11 +217,20 @@ export default class Form extends Component {
             <label>
               Description
               <textarea
-                value={experience.description}
+                value={experience.descriptionForm}
                 placeholder="Describe your experience, skills, accomplishment or achievements"
                 data-key={i}
                 onChange={onExpDescChange}
               ></textarea>
+              <button
+                className="plus-btn"
+                type="button"
+                onClick={onAddDescClick}
+                data-key={i}
+              >
+                <img src={PlusLogo} alt="add" />
+                Add Description
+              </button>
             </label>
           </div>
         );

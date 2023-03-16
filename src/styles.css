@@ -151,6 +151,38 @@ h3 {
   font-weight: 700;
 }
 
+.university-name,
+.university-city {
+  margin-top: 10px;
+}
+
+button.plus-btn {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: none;
+  border-radius: 100px;
+  margin-top: 10px;
+  padding: .5em 1em;
+  cursor: pointer;
+}
+
+button.plus-btn:hover {
+  box-shadow: 0 0 5px white;
+}
+
+.plus-btn img {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+  pointer-events: none;
+}
+
+ul {
+  margin-top: 5px;
+  padding-left: 30px;
+}
+
 @media only screen and (max-width: 1000px) {
   .form, input, textarea {
     max-width: 100%;
