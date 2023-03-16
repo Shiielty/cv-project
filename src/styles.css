@@ -57,6 +57,50 @@ textarea {
   outline: none;
 }
 
+.education-list,
+.experience-list,
+.skill-list {
+  display: flex;
+  align-items: center;
+  border: 2px solid rgb(43, 170, 230);
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 5px;
+  font-weight: 700;
+  background-color: rgba(240, 248, 255, 0.8);
+  width: 100%;
+  max-width: 400px;
+}
+
+.education-list:hover,
+.experience-list:hover,
+.skill-list:hover {
+  box-shadow: 0 0 30px rgba(240, 248, 255, 0.8);
+}
+
+.list-name {
+  flex: 1;
+}
+
+.edit-btn,
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  opacity: .7;
+}
+
+.edit-btn img,
+.delete-btn img {
+  width: 20px;
+  height: auto;
+  pointer-events: none;
+}
+
 button.add-btn {
   padding: 1em 2em;
   width: 100%;
@@ -72,7 +116,6 @@ button.add-btn {
 button.add-btn:hover {
   background: linear-gradient(to right, rgba(0, 0, 0, .8), rgba(200, 200, 200, 1),  rgba(0, 0, 0, .8));
   color: black;
-
 }
 
 .preview {
@@ -123,7 +166,23 @@ h3 {
   .preview {
     position: absolute;
     right: 1%;
-    left: 1%
+    left: 1%;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .preview {
+    width: 496px;
+    height: 701px;
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .preview {
+    width: 413px;
+    font-size: 0.6rem;
+    /* height: 580px; */
   }
 }
 
@@ -137,6 +196,7 @@ h3 {
   }
 
   .preview .name {
+    margin-top: 30px;
     border-bottom: 3px solid black;
   }
 

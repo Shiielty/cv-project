@@ -1,4 +1,6 @@
 import { Component } from "react";
+import PrintLogo from "../assets/print-solid.svg";
+import ViewLogo from "../assets/eye-solid.svg";
 import "./floatButton.css";
 
 export default class FloatButton extends Component {
@@ -18,8 +20,12 @@ export default class FloatButton extends Component {
 
     return (
       <div className="float-btn">
-        <button onClick={viewPreview}>View</button>
-        <button onClick={print}>print</button>
+        <button onClick={viewPreview}>
+          <img src={ViewLogo} alt="view" />
+        </button>
+        <button onClick={print}>
+          <img src={PrintLogo} alt="print" />
+        </button>
       </div>
     );
   }

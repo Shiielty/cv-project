@@ -150,21 +150,23 @@ export default class Content extends Component {
 
   handleAddEduClick(e) {
     e.preventDefault();
-    const newEdu = {
-      university: "",
-      city: "",
-      from: "",
-      to: "",
-      degree: "",
-      gpa: "",
-      thesis: "",
-      relevant: "",
-      edited: true,
-    };
-    const newState = this.state;
-    newState.educations[newState.educations.length - 1].edited = false;
-    newState.educations.push(newEdu);
-    this.setState(newState);
+    if (this.state.educations[this.state.educations.length - 1].university) {
+      const newEdu = {
+        university: "",
+        city: "",
+        from: "",
+        to: "",
+        degree: "",
+        gpa: "",
+        thesis: "",
+        relevant: "",
+        edited: true,
+      };
+      const newState = this.state;
+      newState.educations[newState.educations.length - 1].edited = false;
+      newState.educations.push(newEdu);
+      this.setState(newState);
+    }
   }
 
   handleDeleteEduClick(e) {

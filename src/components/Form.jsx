@@ -1,5 +1,8 @@
 import { Component } from "react";
 import Header from "./Header";
+import EditLogo from "../assets/pen-to-square-solid.svg";
+import DeleteLogo from "../assets/xmark-solid.svg";
+import TrashLogo from "../assets/trash-solid.svg";
 
 export default class Form extends Component {
   render() {
@@ -124,14 +127,14 @@ export default class Form extends Component {
       } else {
         return (
           <div key={i} className="education-list">
-            {education.university}
+            <span className="list-name">{education.university}</span>
             <button
               type="button"
               className="edit-btn"
               data-key={i}
               onClick={onEditEduClick}
             >
-              edit
+              <img src={EditLogo} alt="Edit" />
             </button>
             <button
               type="button"
@@ -139,7 +142,7 @@ export default class Form extends Component {
               data-key={i}
               onClick={onDeleteEduClick}
             >
-              x
+              <img src={TrashLogo} alt="Delete" />
             </button>
           </div>
         );
@@ -213,15 +216,15 @@ export default class Form extends Component {
         );
       } else {
         return (
-          <div key={i} className="education-list">
-            {experience.company}
+          <div key={i} className="experience-list">
+            <span className="list-name">{experience.company}</span>
             <button
               type="button"
               className="edit-btn"
               data-key={i}
               onClick={onEditExpClick}
             >
-              edit
+              <img src={EditLogo} alt="Edit" />
             </button>
             <button
               type="button"
@@ -229,7 +232,7 @@ export default class Form extends Component {
               data-key={i}
               onClick={onDeleteExpClick}
             >
-              x
+              <img src={TrashLogo} alt="Delete" />
             </button>
           </div>
         );
@@ -265,14 +268,14 @@ export default class Form extends Component {
       } else {
         return (
           <div key={i} className="skill-list">
-            {skill.name}
+            <span className="list-name">{skill.name}</span>
             <button
               type="button"
               className="edit-btn"
               data-key={i}
               onClick={onEditSkillClick}
             >
-              edit
+              <img src={EditLogo} alt="Delete" />
             </button>
             <button
               type="button"
@@ -280,7 +283,7 @@ export default class Form extends Component {
               data-key={i}
               onClick={onDeleteSkillClick}
             >
-              x
+              <img src={TrashLogo} alt="Delete" />
             </button>
           </div>
         );
