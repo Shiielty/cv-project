@@ -38,6 +38,8 @@ function Form(props) {
     onDeleteSkillClick,
   } = props;
 
+  console.log(props);
+
   const allEducationsForm = educations.map((education, i) => {
     if (i + 1 === educations.length && education.edited === true) {
       return (

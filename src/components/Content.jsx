@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { cloneDeep } from "lodash";
 import Form from "./Form";
 import Preview from "./Preview";
 
@@ -57,63 +58,64 @@ function Content() {
 
   function handleEduUniChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[key].university = e.target.value;
     setEducations(newState);
+    console.log(newState);
   }
 
   function handleEduCityChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[key].city = e.target.value;
     setEducations(newState);
   }
 
   function handleEduFromChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[key].from = e.target.value;
     setEducations(newState);
   }
 
   function handleEduToChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[key].to = e.target.value;
     setEducations(newState);
   }
 
   function handleEduDegreeChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[key].degree = e.target.value;
     setEducations(newState);
   }
 
   function handleEduGPAChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[key].gpa = e.target.value;
     setEducations(newState);
   }
 
   function handleEduThesisChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[key].thesis = e.target.value;
     setEducations(newState);
   }
 
   function handleEduRelevantChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[key].relevantForm = e.target.value;
     setEducations(newState);
   }
 
   function handleAddRelevantClick(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     const val = educations[key].relevantForm;
     newState[key].relevant.push(val);
     newState[key].relevantForm = "";
@@ -133,7 +135,7 @@ function Content() {
       relevant: [],
       edited: true,
     };
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[newState.length - 1].edited = false;
     newState.push(newEdu);
     setEducations(newState);
@@ -142,7 +144,7 @@ function Content() {
   function handleDeleteEduClick(e) {
     e.preventDefault();
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState.splice(key, 1);
     setEducations(newState);
   }
@@ -150,7 +152,7 @@ function Content() {
   function handleEditEduClick(e) {
     e.preventDefault();
     const key = parseInt(e.target.dataset.key);
-    const newState = educations;
+    const newState = cloneDeep(educations);
     newState[key].edited = true;
     const arr = newState.splice(key, 1);
     newState.pop();
@@ -160,49 +162,49 @@ function Content() {
 
   function handleExpCompanyChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     newState[key].company = e.target.value;
     setExperiences(newState);
   }
 
   function handleExpPositionChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     newState[key].position = e.target.value;
     setExperiences(newState);
   }
 
   function handleExpCityChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     newState[key].city = e.target.value;
     setExperiences(newState);
   }
 
   function handleExpFromChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     newState[key].from = e.target.value;
     setExperiences(newState);
   }
 
   function handleExpToChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     newState[key].to = e.target.value;
     setExperiences(newState);
   }
 
   function handleExpDescChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     newState[key].descriptionForm = e.target.value;
     setExperiences(newState);
   }
 
   function handleAddDescClick(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     const val = experiences[key].descriptionForm;
     newState[key].description.push(val);
     newState[key].descriptionForm = "";
@@ -221,7 +223,7 @@ function Content() {
       descriptionForm: "",
       edited: true,
     };
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     newState[newState.length - 1].edited = false;
     newState.push(newExp);
     setExperiences(newState);
@@ -230,7 +232,7 @@ function Content() {
   function handleDeleteExpClick(e) {
     e.preventDefault();
     const key = parseInt(e.target.dataset.key);
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     newState.splice(key, 1);
     setExperiences(newState);
   }
@@ -238,7 +240,7 @@ function Content() {
   function handleEditExpClick(e) {
     e.preventDefault();
     const key = parseInt(e.target.dataset.key);
-    const newState = experiences;
+    const newState = cloneDeep(experiences);
     newState[key].edited = true;
     const arr = newState.splice(key, 1);
     newState.pop();
@@ -248,14 +250,14 @@ function Content() {
 
   function handleSkillChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = skills;
+    const newState = cloneDeep(skills);
     newState[key].name = e.target.value;
     setSkills(newState);
   }
 
   function handleSkillDescChange(e) {
     const key = parseInt(e.target.dataset.key);
-    const newState = skills;
+    const newState = cloneDeep(skills);
     newState[key].description = e.target.value;
     setSkills(newState);
   }
@@ -267,8 +269,8 @@ function Content() {
       description: "",
       edited: true,
     };
-    const newState = skills;
-    newState[newState.skills.length - 1].edited = false;
+    const newState = cloneDeep(skills);
+    newState[newState.length - 1].edited = false;
     newState.push(newExp);
     setSkills(newState);
   }
@@ -276,7 +278,7 @@ function Content() {
   function handleEditSkillClick(e) {
     e.preventDefault();
     const key = parseInt(e.target.dataset.key);
-    const newState = skills;
+    const newState = cloneDeep(skills);
     newState[key].edited = true;
     const arr = newState.splice(key, 1);
     newState.pop();
@@ -287,7 +289,7 @@ function Content() {
   function handleDeleteSkillClick(e) {
     e.preventDefault();
     const key = parseInt(e.target.dataset.key);
-    const newState = skills;
+    const newState = cloneDeep(skills);
     newState.splice(key, 1);
     setSkills(newState);
   }
