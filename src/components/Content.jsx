@@ -61,7 +61,6 @@ function Content() {
     const newState = cloneDeep(educations);
     newState[key].university = e.target.value;
     setEducations(newState);
-    console.log(newState);
   }
 
   function handleEduCityChange(e) {
